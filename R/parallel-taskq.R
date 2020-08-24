@@ -58,6 +58,7 @@ task_q <- R6::R6Class(
         ready <- topoll[pr == "ready"]
         results <- lapply(ready, function(i) {
           msg <- private$tasks$worker[[i]]$read()
+          browser()
           ## TODO: why can this be NULL?
           if (is.null(msg) || msg$code == PROCESS_MSG) {
             private$tasks$state[[i]] <- "running"
